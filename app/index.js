@@ -58,7 +58,10 @@ app.post("/api/user/login",async (req,res)=>{
     } )
 })
 
-app.get("/api/user/auth",auth,(res,req)=>{
+app.get("/api/user/auth",auth,(req,res)=>{
+   
+      //if auth(middleware) is not true cannot come here 
+
    res.status(200).json({
     _id: req.user._id,
     isAdmin: req.user.role === 0 ? false : true,
@@ -69,6 +72,17 @@ app.get("/api/user/auth",auth,(res,req)=>{
     role: req.user.role,
     image: req.user.image
    })
+})
+
+app.get("/api/user/logout", auth, (req,res)=>{
+    
+    User.findByIdAndUpdate(req.user._id, {token:""})
+    .then(()=>res.status(200).json({
+        success:true,
+    })).catch((err)=>res.json({
+        success:false,
+        error: err
+    }));
 })
 
 app.listen(port, ()=> console.log(`Example app listening on port ${port}!`));
