@@ -59,14 +59,26 @@ userSchema.methods.comparePassword = function(rawPassword , func){
 
 userSchema.methods.generateToken = function(func){
     var user = this;
-    var token = jwt.sign(user._id.toHexString(), "secretToken");
-    user.token = token;
+
+    var token = jwt.sign(JSON.stringify(user._id), "secretToken");
+    
+   
     user.save().then(()=>{
         func(null,user);
         }).catch((err)=>{
         func(err);
       })
 }
+
+userSchema.methods.findByToken = function(token,func){
+    var user =this;
+    jwt.verify(token, "secretToken", (err,decoded)=>{
+        user.findOne({"_id": decoded, "token": token})
+        .then((user) => func(null,user))
+        .catch((err)=>func(err))
+
+    })
+} 
 
 
 const User = mongoose.model("User",userSchema);

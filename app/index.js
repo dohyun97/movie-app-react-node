@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const {User} = require("./models/User");
 const config = require("./config/key");
 const cookieParser = require("cookie-parser");
+const auth = require("./middleware/auth");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -17,7 +18,7 @@ mongoose.connect(config.mongoURI ,{
 .catch(err=>console.log(err));
 app.get("/",  (req, res)=>res.send("Hello World!"));
 
-app.post("/register",  async (req, res)=>{
+app.post("/api/user/register",  async (req, res)=>{
     const user = new User(req.body);
    //userSchema.pre occurs. go to User.js
     const result = await user.save().then(()=>{
@@ -30,7 +31,7 @@ app.post("/register",  async (req, res)=>{
     
 });
 
-app.post("/login",async (req,res)=>{
+app.post("/api/user/login",async (req,res)=>{
     await User.findOne({email:req.body.email}).then((user)=>{
     
         if(!user){
@@ -55,6 +56,19 @@ app.post("/login",async (req,res)=>{
 
         });
     } )
+})
+
+app.get("/api/user/auth",auth,(res,req)=>{
+   res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    role: req.user.role,
+    image: req.user.image
+   })
 })
 
 app.listen(port, ()=> console.log(`Example app listening on port ${port}!`));
