@@ -26,7 +26,11 @@ app.post("/api/user/register",  async (req, res)=>{
           success: true
         })
       }).catch((err)=>{
-        res.json({ success: false, err })
+        if (!user.compareEmail(req.body.email)){
+           res.json({ success: false, msg: "Email already exsits" });
+        }else{
+        res.json({ success: false });
+        }
       })
     
 });

@@ -6,11 +6,13 @@ const jwt = require("jsonwebtoken");
 const userSchema = mongoose.Schema({
     name:{
         type:String,
+        minlength:1,
         maxlength:50,
     },
     email:{
         type:String,
         trim:true,
+        minlength:1,
         unique:1,
     },
     password:{
@@ -55,6 +57,13 @@ userSchema.methods.comparePassword = function(rawPassword , func){
         if(err) return func(err);
         return func(null, isMatch);
     })
+}
+
+userSchema.methods.compareEmail = function(email){
+     if (this.email === email){
+        return false;
+     }
+    
 }
 
 userSchema.methods.generateToken = function(func){
