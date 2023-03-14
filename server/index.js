@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+const port = 5001;
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const {User} = require("./models/User");
@@ -83,6 +83,10 @@ app.get("/api/user/logout", auth, (req,res)=>{
         success:false,
         error: err
     }));
+})
+
+app.get("/api/hello", (req,res)=>{
+    res.send("hi")
 })
 
 app.listen(port, ()=> console.log(`Example app listening on port ${port}!`));
