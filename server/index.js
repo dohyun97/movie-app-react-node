@@ -78,7 +78,7 @@ app.get("/api/user/auth",auth,(req,res)=>{
    })
 })
 
-app.get("/api/user/logout", auth, (req,res)=>{
+app.post("/api/user/logout", auth, (req,res)=>{
 
     User.findByIdAndUpdate(req.user._id, {token:""})
     .then(()=>res.status(200).json({

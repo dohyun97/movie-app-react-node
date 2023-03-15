@@ -2,6 +2,7 @@
  import axios from 'axios';
  import { useNavigate } from "react-router-dom";
 
+
  function LandingPage() {
     const Navigate = useNavigate();
     useEffect(()=>{
@@ -10,7 +11,7 @@
     },[]);
      
     const onClickHandler = ()=>{
-      axios.get("/api/user/logout")
+      axios.post("/api/user/logout")
         .then(response =>{
           if(response.data.success){
               alert("successfully logged out")
