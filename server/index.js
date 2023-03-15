@@ -79,7 +79,7 @@ app.get("/api/user/auth",auth,(req,res)=>{
 })
 
 app.get("/api/user/logout", auth, (req,res)=>{
-    
+
     User.findByIdAndUpdate(req.user._id, {token:""})
     .then(()=>res.status(200).json({
         success:true,
@@ -94,4 +94,3 @@ app.get("/api/hello", (req,res)=>{
 })
 
 app.listen(port, ()=> console.log(`Example app listening on port ${port}!`));
-

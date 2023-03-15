@@ -71,7 +71,7 @@ userSchema.methods.generateToken = function(func){
 
     var token = jwt.sign(JSON.stringify(user._id), "secretToken");
     
-   
+   user.token = token;
     user.save().then(()=>{
         func(null,user);
         }).catch((err)=>{
@@ -83,13 +83,12 @@ userSchema.statics.findByToken = function(token,func){
     var user =this;
     //decode token. decoded token = user_id
     jwt.verify(token, "secretToken", (err,decoded)=>{
-        user.findOne({"_id": decoded, "token": token})
+       user.findOne({"token":token})
         .then((user) => func(null,user))
         .catch((err)=>func(err))
-
     })
 } 
-
+    
 
 const User = mongoose.model("User",userSchema);
 module.exports = {User};

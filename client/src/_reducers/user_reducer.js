@@ -6,7 +6,7 @@ export default function(state={}, action){
     {
         return {...state , loginSuccess: action.payload}
     }else if(action.type === REGISTER_USER){
-        return {...state , registerSuccess: action.payload}
+        return {...state ,registerSuccess: action.payload}
     }
     
     return state;

@@ -33,6 +33,7 @@ function LoginPage() {
         <input type = "password" name="password" placeholder='Please type password'></input>
         <br/>
         <button>Login</button>
+        <p class="message">Not registered? <a href="/register">Create an account</a></p>
      </form>
      
      </div>
