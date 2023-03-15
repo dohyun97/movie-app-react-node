@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {registerUser} from "../../../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-
+import "../../views/css/login.css"
 
 function RegisterPage() {
   const dispatch = useDispatch(); 
@@ -19,18 +19,21 @@ function RegisterPage() {
     const confirmPassword = event.target.confirmPassword.value;
     const Name = event.target.name.value;
     
-    if(Name === ""){
-      setNameErr("Please type name");
-    }
+    setNameErr(""); setConfirmErr(""); setEmailErr(""); setPwErr("");
+    
     if(Email === ""){
       setEmailErr("Please type email");
+      
+    }if(Name === ""){
+      setNameErr("Please type name");
+      
     }
     
     if( Password.length <5){
       setPwErr("Password length should be minimum 5");
-    }
-    if(Password !== confirmPassword){
-      setConfirmErr("Confirmed password should be same as Password");
+      
+    }else if(Password !== confirmPassword){
+      return setConfirmErr("Please type same password");
     }
      let body = {
         email: Email,
@@ -42,30 +45,38 @@ function RegisterPage() {
       .then((res)=>{
           if(res.payload.success){
               navigate("/login");
-          }else{
-            alert(JSON.stringify(res.payload.msg));
+         }else{
+            if(Name === "" || Email === "" || Password.length<5){
+              alert("Please fill up again")
+            }else{
+              
+              alert(JSON.stringify(res.payload.msg));
+            }
           }
        }) 
   }
   return (
+    <div class="login-page">
     <div style={{  display:'flex', justifyContent:'center', alignItems:'center', width:'100%', height:'100vh' }}>
+    <div style={{ width: '500%'}}class = "form">
      <form style={{display:'flex', flexDirection:'column'}} onSubmit={onSubmitHandler}> 
-        <label>Email</label>
+        <label style={{display: 'flex', justifyContent: 'left'}}>Email</label>
         <input type = "email" name="email" placeholder="Please type email"></input>
-        <div style={{ color: 'red'}}>{emailErr}</div>
-        <label >Name</label>
+        <div class="err"style={{ color: 'red'}}>{emailErr}</div>
+        <label style={{display: 'flex', justifyContent: 'left'}}>Name</label>
         <input type = "text" name="name" placeholder='Please type name'></input>
-        <div style={{ color: 'red'}}>{nameErr}</div>
-        <label >Password</label>
+        <div class= "err"style={{ color: 'red'}}>{nameErr}</div>
+        <label style={{display: 'flex', justifyContent: 'left'}}>Password</label>
         <input type = "password" name="password" placeholder='Please type password'></input>
-        <div style={{ color: 'red'}}>{pwErr}</div>
-        <label >Confirm Password</label>
+        <div class="err" style={{ color: 'red'}}>{pwErr}</div>
+        <label style={{display: 'flex', justifyContent: 'left'}}>Confirm Password</label>
         <input type = "password" name="confirmPassword" placeholder='Please type password'></input>
-        <div style={{ color: 'red'}}>{confirmErr}</div>
+        <div class="err" style={{ color: 'red'}}>{confirmErr}</div>
         <br/>
         <button>Submit</button>
      </form>
-     
+     </div>
+     </div>
      </div>
   )
 }
