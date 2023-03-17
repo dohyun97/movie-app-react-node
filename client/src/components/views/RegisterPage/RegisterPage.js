@@ -56,22 +56,22 @@ function RegisterPage() {
        }) 
   }
   return (
-    <div class="login-page">
+    <div className="login-page">
     <div style={{  display:'flex', justifyContent:'center', alignItems:'center', width:'100%', height:'100vh' }}>
-    <div style={{ width: '500%'}}class = "form">
+    <div style={{ width: '500%'}} className = "form">
      <form style={{display:'flex', flexDirection:'column'}} onSubmit={onSubmitHandler}> 
         <label style={{display: 'flex', justifyContent: 'left'}}>Email</label>
         <input type = "email" name="email" placeholder="Please type email"></input>
-        <div class="err"style={{ color: 'red'}}>{emailErr}</div>
+        <div className="err"style={{ color: 'red'}}>{emailErr}</div>
         <label style={{display: 'flex', justifyContent: 'left'}}>Name</label>
         <input type = "text" name="name" placeholder='Please type name'></input>
-        <div class= "err"style={{ color: 'red'}}>{nameErr}</div>
+        <div className= "err"style={{ color: 'red'}}>{nameErr}</div>
         <label style={{display: 'flex', justifyContent: 'left'}}>Password</label>
         <input type = "password" name="password" placeholder='Please type password'></input>
-        <div class="err" style={{ color: 'red'}}>{pwErr}</div>
+        <div className="err" style={{ color: 'red'}}>{pwErr}</div>
         <label style={{display: 'flex', justifyContent: 'left'}}>Confirm Password</label>
         <input type = "password" name="confirmPassword" placeholder='Please type password'></input>
-        <div class="err" style={{ color: 'red'}}>{confirmErr}</div>
+        <div className="err" style={{ color: 'red'}}>{confirmErr}</div>
         <br/>
         <button>Submit</button>
      </form>

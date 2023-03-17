@@ -22,6 +22,8 @@ function LoginPage() {
      dispatch(loginUser(body))
       .then((res)=>{
           if(res.payload.loginSuccess){
+          console.log(res.payload);
+             window.localStorage.setItem('userId', res.payload.userId); //To save userId in local storage
               navigate("/");
           }else{
             alert(res.payload.message);
@@ -29,22 +31,22 @@ function LoginPage() {
        }) 
   }
   return (
-   <div class="login-page">
+   <div className="login-page">
     <div style={{  display:'flex', justifyContent:'center', alignItems:'center', width:'100%', height:'100vh' }}>
-      <div class = "form">
-     <form style={{display:'flex', flexDirection:'column'}} onSubmit={onSubmitHandler}> 
+      
+     <form className= "form" style={{display:'flex', flexDirection:'column'}} onSubmit={onSubmitHandler}> 
         <label style={{display: 'flex', justifyContent: 'left'}}>Email</label>
         <input type = "email" name="email" placeholder="Please type email"></input>
         <label style={{display: 'flex', justifyContent: 'left'}}>Password</label>
         <input type = "password" name="password" placeholder='Please type password'></input>
         <br/>
         <button>Login</button>
-        <p class="message">Not registered? <a href="/register">Create an account</a></p>
-     </form>
-     </div>
-     </div>
+        <p className="message">Not registered? <a href="/register">Create an account</a></p>
+      </form>
+    </div>
+  </div>
      
-     </div>
+    
      
   )
 } 

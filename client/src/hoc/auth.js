@@ -7,7 +7,7 @@
    //option: t => only login user can go
    //F =>  only unlogin user can go
    // null => all the user can go
-    function AuthenticationCheck(props) {
+    function AuthenticationCheck() {
         const Navigate = useNavigate();
         const dispatch = useDispatch();
 
