@@ -60,7 +60,7 @@ export const DetailPage = () => {
  return (
 
     <>     
-            <div style={{padding: '20px 20px'}}>
+            <div style={{padding: '30px 90px 30px 90px'}}>
             <h3>More Details</h3>
             <div style={{display:'flex', justifyContent:'right'}}>
             {movieDetails &&

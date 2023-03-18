@@ -56,12 +56,12 @@ import Button from 'react-bootstrap/Button';
         <MainImage popularMovie={popularMovie} />
      }
      </div >
-     <div style={{ paddingTop: '40px', paddingLeft: '40px'}}>
+     <div style={{ paddingTop: '60px', paddingLeft: '60px'}}>
         <h2>Hot Movies</h2>
      </div>
      <hr/>
      
-     <Row style={{paddingLeft: '40px', paddingRight:'40px'}}>
+     <Row style={{paddingLeft: '60px', paddingRight:'60px'}}>
      {movies && movies.map((movie,index) => (
       <React.Fragment key={index}>
          <Grid movie={movie} 

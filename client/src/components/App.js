@@ -26,8 +26,8 @@ function App() {
   const NewMyPage = Auth(MyPage,true);
   return (
    
-<>
-<NavBar/>
+<div>
+<NavBar />
 <div style={{ paddingTop: '60px' }}> 
        <Routes>  
 
@@ -40,7 +40,7 @@ function App() {
          
         </Routes>
   </div> 
-  </>
+  </div>
   
   );
 }

@@ -43,7 +43,7 @@ const unsaveHandler = (commentId) =>()=>{
   
   return (
   
-    <div style={{padding:'20px 100px'}}>
+    <div style={{padding:'20px 200px 20px 200px'}}>
      <h1>Saved Movie</h1>
      <hr/>
 
