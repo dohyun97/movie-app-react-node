@@ -16,6 +16,7 @@ function AuthMenu() {
     axios.post("/api/user/logout")
     .then(response =>{
       if(response.data.success){
+          console.log(response.data)
           alert("Successfully logged out")
            Navigate("/login");
       }else{

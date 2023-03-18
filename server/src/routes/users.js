@@ -65,6 +65,17 @@ router.get("/auth",auth,(req,res)=>{
    })
 })
 
+router.post("/findUser",  (req,res)=>{
+       
+  User.findById(req.body.id)
+    .then((user)=>{
+        res.status(200).json({
+            success: true,
+            userInfo: user
+        })
+    }).catch((err)=>res.status(500).send(err))
+})
+
 router.post("/logout", auth, (req,res)=>{
 
     User.findByIdAndUpdate(req.user._id, {token:""})

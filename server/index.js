@@ -18,7 +18,11 @@ mongoose.connect(config.mongoURI ,{
 .catch(err=>console.log(err));
 
 const users = require("./src/routes/users");
+const saves= require("./src/routes/save");
+const comments = require("./src/routes/comment")
 app.use("/api/user",users); //middleware
+app.use("/api/save",saves);
+app.use("/api/comment",comments);
 
 
 

@@ -12,6 +12,7 @@
   "author": "Dohyun",
   "license": "ISC",
   "dependencies": {
+    "antd": "^5.3.1",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.2.3",

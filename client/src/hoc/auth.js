@@ -18,7 +18,7 @@
                 //not auth
                 if(!response.payload.isAuth){
                     if(option){
-                        Navigate("/");
+                        Navigate("/login");
                     }
                 }else{
                     if(adminRoute && !response.payload.isAuth){

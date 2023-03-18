@@ -17,11 +17,11 @@ import Button from 'react-bootstrap/Button';
   const [page,setPage] = useState(1);
   useEffect(()=>{
     const popularUrl = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-    
+   
     fetch(popularUrl)
     .then(res => res.json())
     .then(res => {
-      console.log(res.results)
+     
         setPopularMovie(res.results[0])
         setMovies(res.results)
          
@@ -56,12 +56,12 @@ import Button from 'react-bootstrap/Button';
         <MainImage popularMovie={popularMovie} />
      }
      </div >
-     <div style={{ paddingTop: '10px', paddingLeft: '10px'}}>
+     <div style={{ paddingTop: '40px', paddingLeft: '40px'}}>
         <h2>Hot Movies</h2>
      </div>
      <hr/>
      
-     <Row style={{paddingLeft: '10px', paddingRight:'10px'}}>
+     <Row style={{paddingLeft: '40px', paddingRight:'40px'}}>
      {movies && movies.map((movie,index) => (
       <React.Fragment key={index}>
          <Grid movie={movie} 
