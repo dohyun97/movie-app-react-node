@@ -14,7 +14,7 @@
         useEffect(() => {
 
             dispatch(auth()).then(response => {
-                console.log(response);
+                
                 //not auth
                 if(!response.payload.isAuth){
                     if(option){

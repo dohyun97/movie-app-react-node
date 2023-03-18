@@ -17,6 +17,9 @@ const saveSchema = mongoose.Schema({
     },
     movieRunTime: {
         type: String
+    },
+    movieDate: {
+        type:String
     }
 }, { timestamps: true })
 

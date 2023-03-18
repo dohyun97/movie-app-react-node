@@ -10,13 +10,13 @@ import { useNavigate } from "react-router-dom";
 function AuthMenu() {
   
   const Navigate = useNavigate();
-  const user = useSelector(state => state.user)
+  const user =  useSelector(state => state.user)
   const logoutHandler = ()=>{
     
     axios.post("/api/user/logout")
     .then(response =>{
       if(response.data.success){
-          console.log(response.data)
+          
           alert("Successfully logged out")
            Navigate("/login");
       }else{
@@ -25,7 +25,7 @@ function AuthMenu() {
     })
     }
      
-       
+   
     
       if (user.userData && !user.userData.isAuth) {
         return (
@@ -37,7 +37,7 @@ function AuthMenu() {
       } else {
         return (
           <Nav className="justify-content-end flex-grow-1 pe-3">
-          <Nav.Link href="#">MyPage</Nav.Link>
+          <Nav.Link href="/mypage">MyPage</Nav.Link>
           <Nav.Link onClick={logoutHandler}>LogOut</Nav.Link>
        </Nav>  
         )

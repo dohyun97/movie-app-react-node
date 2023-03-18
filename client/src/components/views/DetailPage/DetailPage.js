@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { API_KEY , API_URL,IMAGE_URL} from '../Config';
+import { API_KEY , API_URL,IMAGE_URL} from '../../Config'
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import DetailImage from './DetailImage';

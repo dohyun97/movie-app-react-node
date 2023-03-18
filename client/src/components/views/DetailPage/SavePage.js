@@ -8,10 +8,10 @@ const SavePage = (props) => {
    const body={
     userForm: props.userForm,
     movieId: props.movieId,
-    movieTitle: props.movieDetails.title,
+    movieTitle: props.movieDetails.original_title,
     movieDate: props.movieDetails.release_date,
-    moviePic: props.movieDetails.poster_path
-
+    moviePost: props.movieDetails.poster_path,
+    movieRunTime:props.movieDetails.runtime
 }
   
   

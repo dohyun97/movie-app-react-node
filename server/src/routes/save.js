@@ -43,4 +43,27 @@ router.post("/remove",async (req, res)=>{
 
 })
 
+router.post("/removebyId",async (req, res)=>{
+   console.log(req.body.id)
+  await Save.findByIdAndRemove(req.body.id)
+    .then(()=>{
+      res.status(200).json({success:true})
+     }).catch((err)=>{
+       res.status(400).send(err)
+     })
+    
+    
+ 
+ })
+
+router.post("/saveList", async (req,res)=>{
+
+  await Save.find({userForm: req.body.userId})
+  .then((list)=>{
+    res.status(200).json({success:true, saveList: list})
+  }).catch((err)=>{
+    res.status(400).send(err)
+  })
+})
+
 module.exports=router

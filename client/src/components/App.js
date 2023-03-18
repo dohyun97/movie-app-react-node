@@ -11,9 +11,10 @@ import { Switch } from "react-router-dom";
 import LandingPage from "./views/LandingPage/LandingPage";
 import LoginPage from "./views/LoginPage/LoginPage";
 import RegisterPage from "./views/RegisterPage/RegisterPage";
-import { DetailPage } from './DetailPage/DetailPage';
+import { DetailPage } from './views/DetailPage/DetailPage';
 import NavBar  from './views/NavBar/NavBar';
 import Auth from "../hoc/auth";
+import MyPage from './views/MyPage/MyPage';
 
 
 
@@ -22,6 +23,7 @@ function App() {
   const NewLoginPage = Auth(LoginPage, false);
   const NewRegisterPage = Auth(RegisterPage, false);
   const NewDetailPage = Auth(DetailPage,true);
+  const NewMyPage = Auth(MyPage,true);
   return (
    
 <>
@@ -33,6 +35,7 @@ function App() {
           <Route path="/login" element = {<NewLoginPage/>} />
           <Route path="/register" element = {< NewRegisterPage/>} /> 
           <Route path='/detail/:movieId' element= {<NewDetailPage/>} />
+          <Route path='/mypage' element= {<NewMyPage/>} />
         
          
         </Routes>
