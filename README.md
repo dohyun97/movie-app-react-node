@@ -1,7 +1,7 @@
 # movie-app-react-node
 Movie app <br>
 Used MongoDB/React/Node.js/Express.js <br>
-Get Open API from the https://www.themoviedb.org/
+Used Open API from the https://www.themoviedb.org/
 
 
 # Install
