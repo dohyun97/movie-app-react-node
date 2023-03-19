@@ -28,11 +28,11 @@ function MyPage() {
 },[])
 
 const unsaveHandler = (commentId) =>()=>{
-    const body={
+    let data={
         id:commentId
     }
    
-    axios.post('/api/save/removebyId', body)
+    axios.delete('/api/save/removebyId', {data})
       .then((res)=>{
         console.log("Successfully Unsaved!")
         window.location.reload(true)

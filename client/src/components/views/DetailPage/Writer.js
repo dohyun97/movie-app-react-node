@@ -75,12 +75,12 @@ const editClick = ()=>{
 
 
 const deleteClick=()=>{
-       let body = {
+       let data = {
            id: props.commentId
        }
       
 
-    axios.post("/api/comment/delete", body)
+    axios.delete("/api/comment/delete", {data})
     .then((res)=>{
      
         alert("Successfully deleted")

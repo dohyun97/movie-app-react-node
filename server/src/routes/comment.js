@@ -38,7 +38,7 @@ router.post("/edit", async (req,res)=>{
     }).catch((err)=>res.status(400).send(err))
 })
 
-router.post("/delete", async (req,res)=>{
+router.delete("/delete", async (req,res)=>{
     
     await Comment.findByIdAndDelete(req.body.id)
     .then(()=>{

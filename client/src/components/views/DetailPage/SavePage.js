@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const SavePage = (props) => {
    const [save,setSave] = useState(false)
-   const body={
+   const data={
     userForm: props.userForm,
     movieId: props.movieId,
     movieTitle: props.movieDetails.original_title,
@@ -17,7 +17,7 @@ const SavePage = (props) => {
   
    useEffect(()=>{
     
-    axios.post('/api/save/checkSaved', body)
+    axios.post('/api/save/checkSaved', data)
     .then((response) => {
         if (response.data.success) {
           
@@ -34,7 +34,7 @@ const SavePage = (props) => {
   const clickHandler = ()=>{
     
     if(save){
-      axios.post('/api/save/remove', body)
+      axios.delete('/api/save/remove', {data})
       .then((res)=>{
         
          setSave(false)
@@ -42,7 +42,7 @@ const SavePage = (props) => {
         alert("Fail to unsave")
       })
     }else{
-      axios.post('/api/save/add', body)
+      axios.post('/api/save/add',data)
       .then((res)=>{
         
          setSave(true)
