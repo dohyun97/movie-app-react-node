@@ -31,7 +31,7 @@ router.post("/add",async (req, res)=>{
   
 })
 router.delete("/remove",async (req, res)=>{
-   console.log(req.body)
+ 
  await Save.findOneAndRemove({  userForm:req.body.userForm, movieId:req.body.movieId })
    .then(()=>{
      res.status(200).json({success:true})
@@ -44,7 +44,7 @@ router.delete("/remove",async (req, res)=>{
 })
 
 router.delete("/removebyId",async (req, res)=>{
-   console.log(req.body.id)
+   
   await Save.findByIdAndRemove(req.body.id)
     .then(()=>{
       res.status(200).json({success:true})

@@ -13,7 +13,7 @@ import AuthMenu from './AuthMenu';
 function NavBar() {
 
   return (
-    <Navbar bg="light" expand="lg" style={{position:'fixed', width:'100%', zIndex: 10, paddingLeft:"45px",paddingRight:"45px",height:'80px', fontSize:'20px'}}>
+    <Navbar bg="light" expand="lg" style={{position:'fixed', width:'100%', zIndex: 10, paddingLeft:"45px",paddingRight:"45px", fontSize:'20px'}}>
       <Container fluid>
         
         <Navbar.Collapse id="navbarScroll">
